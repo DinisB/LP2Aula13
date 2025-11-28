@@ -6,8 +6,8 @@ namespace Prototype
 {
     public class Level
     {
-        private readonly char category;
-        private readonly IList<int> scores;
+        private char category;
+        private IList<int> scores;
 
         public Level(char category, IEnumerable<int> scores)
         {
@@ -29,14 +29,15 @@ namespace Prototype
 
         public Level ShallowCopy()
         {
-            // Finish me!
-            throw new NotImplementedException();
+            return MemberwiseClone() as Level;
         }
 
         public Level DeepCopy()
         {
-            // Finish me!
-            throw new NotImplementedException();
+            Level copy = MemberwiseClone() as Level;
+            copy.category = category;
+            copy.scores = new List<int>(scores);
+            return copy;
         }
     }
 }
